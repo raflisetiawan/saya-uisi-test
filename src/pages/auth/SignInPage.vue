@@ -9,24 +9,26 @@
               <div class="text-h6">Login</div>
             </div>
           </div>
-          <div class="row full-width justify-center">
-            <div class="col-md-5">
-              <q-input rounded outlined v-model="signInForm.email" label="Masukkan Email UISI" />
+          <q-form @submit="onSubmit">
+            <div class="row full-width justify-center">
+              <div class="col-md-5">
+                <q-input rounded outlined v-model="signInForm.email" label="Masukkan Email UISI" />
+              </div>
             </div>
-          </div>
-          <div class="row full-width justify-center q-mt-md">
-            <div class="col-md-5">
-              <q-input rounded outlined v-model="signInForm.password" type="password" label="Masukkan Password"
-                bottom-slots>
-                <template v-slot:hint><q-btn flat dense>Lupa Password?</q-btn></template>
-              </q-input>
+            <div class="row full-width justify-center q-mt-md">
+              <div class="col-md-5">
+                <q-input rounded outlined v-model="signInForm.password" type="password" label="Masukkan Password"
+                  bottom-slots>
+                  <template v-slot:hint><q-btn flat dense>Lupa Password?</q-btn></template>
+                </q-input>
+              </div>
             </div>
-          </div>
-          <div class="row full-width justify-center q-mt-xl">
-            <div class="col-md-5">
-              <q-btn label="Login" color="primary" class="full-width"></q-btn>
+            <div class="row full-width justify-center q-mt-xl">
+              <div class="col-md-5">
+                <q-btn label="Login" type="submit" color="primary" class="full-width"></q-btn>
+              </div>
             </div>
-          </div>
+          </q-form>
         </div>
       </div>
     </div>
@@ -34,12 +36,20 @@
 </template>
 
 <script setup lang="ts">
+import { Cookies } from 'quasar';
 import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const signInForm = reactive({
   email: '',
   password: ''
 })
+
+const onSubmit = () => {
+  Cookies.set('signin', 'true');
+  router.push({ name: 'HomePage' })
+}
 </script>
 
 <style scoped>
