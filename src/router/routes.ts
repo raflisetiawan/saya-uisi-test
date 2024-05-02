@@ -24,6 +24,28 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/bill-list',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/bill-list/IndexPage.vue'),
+        name: 'BillListPage',
+      },
+    ],
+  },
+  {
+    path: '/list-of-class-session',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/list-of-class-sessions/IndexPage.vue'),
+        name: 'ListOfClassSessions',
+      },
+    ],
+  },
+  {
     path: '/signin',
     component: () => import('layouts/AuthLayout.vue'),
     children: [
