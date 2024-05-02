@@ -13,6 +13,17 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/study-history',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('pages/study-history/IndexPage.vue'),
+        name: 'StudyHistoryPage',
+      },
+    ],
+  },
+  {
     path: '/signin',
     component: () => import('layouts/AuthLayout.vue'),
     children: [
